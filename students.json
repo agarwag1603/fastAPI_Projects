@@ -1,0 +1,48 @@
+[
+    {
+      "student_id": "IT001",
+      "student_name": "Aarav Sharma",
+      "age": 14,
+      "class": "8th Grade",
+      "favorite_subject": "Mathematics",
+      "school_name": "Greenwood High School",
+      "city": "Bangalore"
+    },
+    {
+      "student_id": "IT002",
+      "student_name": "Diya Patel",
+      "age": 13,
+      "class": "7th Grade",
+      "favorite_subject": "Science",
+      "school_name": "Sunrise Public School",
+      "city": "Ahmedabad"
+    },
+    {
+      "student_id": "IT003",
+      "student_name": "Rohan Mehta",
+      "age": 15,
+      "class": "9th Grade",
+      "favorite_subject": "English",
+      "school_name": "Bluebell International School",
+      "city": "Delhi"
+    },
+    {
+      "student_id": "IT004",
+      "student_name": "Sneha Iyer",
+      "age": 12,
+      "class": "6th Grade",
+      "favorite_subject": "History",
+      "school_name": "St. Joseph’s Convent",
+      "city": "Chennai"
+    },
+    {
+      "student_id": "IT005",  
+      "student_name": "Arjun Das",
+      "age": 16,
+      "class": "10th Grade",
+      "favorite_subject": "Computer Science",
+      "school_name": "Modern Academy",
+      "city": "Kolkata"
+    }
+  ]
+  
