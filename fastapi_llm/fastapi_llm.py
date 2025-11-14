@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Path, HTTPException
+from fastapi.responses import JSONResponse
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 from langchain_core.output_parsers import StrOutputParser
@@ -60,5 +61,5 @@ def essay_generator(chatme:LLM):
 
     result=chain.invoke({"topic":chatme.topic, "type":chatme.type})
 
-    return result
+    return JSONResponse(status_code=200, content=result)
     
