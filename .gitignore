@@ -1,2 +1,4 @@
 __pycache__/*
 .env
+.DS_Store
+rag_chatbot/__pycache__/fastapi_rag.cpython-313.pyc
