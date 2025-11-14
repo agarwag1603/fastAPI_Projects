@@ -2,33 +2,48 @@ import json
 from fastapi import FastAPI, Path, HTTPException, Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, computed_field
-from typing import Annotated
+from typing import Annotated,Optional
+import os
 
 app = FastAPI()
+
+current_script_path = os.path.abspath(__file__)
+current_script_directory = os.path.dirname(os.path.dirname(current_script_path))
+file_name= os.path.join(current_script_directory,"students.json")
 
 class Student(BaseModel):
     student_id: Annotated[str,Field(..., description = "student roll number",example = "IT001")]
     student_name: Annotated[str,Field(..., description = "student name",example = "Gaurav")]
-    age: Annotated[int,Field(..., gt=0, lt=120, description = "Student age",example = 15)]
+    age: Annotated[int,Field(..., gt=0, lt=121, description = "Student age",example = 15)]
     std: Annotated[str,Field(..., description = "Student class grade",example = "8th Grade")]
     favorite_subject: Annotated[str,Field(..., description = "Faviorite subject",example = "Physics")]
     school_name: Annotated[str,Field(..., description = "name of the school",example = "SD Jain")]
     city: Annotated[str,Field(..., description = "name of the city",example = "Mumbai")]
-    total_marks: Annotated[int,Field(..., lt=500, description = "total marks in exam",example = 451)]
-    
+    total_marks: Annotated[int,Field(..., lt=501, description = "total marks in exam",example = 451)]
+
     @computed_field
     @property
     def total_percentage(self) -> float:
         total_percentage=(self.total_marks/500)*100
         return total_percentage
 
+class UpdateStudent(BaseModel):
+    student_id: Annotated[Optional[str],Field(default=None)]
+    student_name: Annotated[Optional[str],Field(default=None)]
+    age: Annotated[Optional[int],Field(default=None, gt=0, lt=121)]
+    std: Annotated[Optional[str],Field(default=None)]
+    favorite_subject: Annotated[Optional[str],Field(default=None)]
+    school_name: Annotated[Optional[str],Field(default=None)]
+    city: Annotated[Optional[str],Field(default=None)]
+    total_marks: Annotated[Optional[int],Field(default=None, gt=0, lt=501)]
+
 def load_data():
-    with open("students.json",'r') as f:
+    with open(file_name,'r') as f:
         data=json.load(f)
     return data
 
 def save_data(data):
-    with open("students.json",'w') as f:
+    with open(file_name,'w') as f:
         json.dump(data,f)
 
 @app.get("/")
@@ -77,4 +92,27 @@ def create_student(student:Student):
     save_data(data)
 
     return JSONResponse(status_code=201, content={"message":"student added"})
+
+@app.put('/update/{student_id}')
+def update_student(student_id: str, student_update:UpdateStudent):
+
+    data = load_data()
+
+    if student_id not in data:
+        raise HTTPException(status_code=404, detail="Student record not found")
+    
+    existing_info=data[student_id]
+    updated_info=student_update.model_dump(exclude_unset=True)
+
+    for key, values in updated_info.items():
+        existing_info[key]=values
+
+    existing_info['student_id']=student_id
+    student_pydantic_obj = Student(**existing_info)
+
+    existing_info=student_pydantic_obj.model_dump(exclude='student_id')
+
+    data[student_id]=existing_info
+    save_data(data)
+    return JSONResponse(status_code=200, content={"message":"student updated"})
 
