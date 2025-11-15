@@ -2,3 +2,11 @@ __pycache__/*
 .env
 .DS_Store
 rag_chatbot/__pycache__/fastapi_rag.cpython-313.pyc
+rag_chatbot_outside_route/__pycache__/fastapi_rag.cpython-313.pyc
+rag_chatbot_outside_route/chroma_db/
+rag_with_localdb/__pycache__/fastapi_rag.cpython-313.pyc
+rag_with_localdb/chroma_db/chroma.sqlite3
+rag_with_localdb/chroma_db/18b5fff7-5a30-46af-9095-839eaf402f48/data_level0.bin
+rag_with_localdb/chroma_db/18b5fff7-5a30-46af-9095-839eaf402f48/header.bin
+rag_with_localdb/chroma_db/18b5fff7-5a30-46af-9095-839eaf402f48/length.bin
+rag_with_localdb/chroma_db/18b5fff7-5a30-46af-9095-839eaf402f48/link_lists.bin
