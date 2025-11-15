@@ -10,3 +10,7 @@ rag_with_localdb/chroma_db/18b5fff7-5a30-46af-9095-839eaf402f48/data_level0.bin
 rag_with_localdb/chroma_db/18b5fff7-5a30-46af-9095-839eaf402f48/header.bin
 rag_with_localdb/chroma_db/18b5fff7-5a30-46af-9095-839eaf402f48/length.bin
 rag_with_localdb/chroma_db/18b5fff7-5a30-46af-9095-839eaf402f48/link_lists.bin
+rag_with_localdb/__pycache__/app.cpython-313.pyc
+rag_with_localdb/embedding/__pycache__/embedding_pdf.cpython-313.pyc
+rag_with_localdb/llm/__pycache__/llm_caller.cpython-313.pyc
+rag_with_localdb/schema/__pycache__/user_input.cpython-313.pyc
