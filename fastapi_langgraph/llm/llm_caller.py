@@ -5,10 +5,11 @@ from typing import TypedDict
 class StateLG(TypedDict):
     query: str
     gpt_model: str
+    content_type: str
     output: str
-
+    
 def chatbot(state: StateLG):
-    prompt= f"You are an AI assistant who can help in generating content about: \n {state['query']}"
+    prompt= f"You are an AI assistant who can help in generating {state['content_type']} about: \n {state['query']}"
     gpt_llm = ChatOpenAI(model=state['gpt_model'])
     response=gpt_llm.invoke(prompt)
     return {"output":response.content}

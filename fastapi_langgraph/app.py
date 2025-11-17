@@ -11,7 +11,7 @@ app = FastAPI()
 def langgraph_caller(langgraph:LLM):
 
     try:
-        result=workflow.invoke({"query":langgraph.query, "gpt_model":langgraph.gpt_model})
-        return LLMResponse(query=result["query"], gpt_model=result["gpt_model"], output = result["output"])
+        result=workflow.invoke({"query":langgraph.query, "gpt_model":langgraph.gpt_model, "content_type":langgraph.content_type})
+        return LLMResponse(query=result["query"],  gpt_model=result["gpt_model"], content_type= result["content_type"], output = result["output"])
     except Exception as e:
         return HTTPException(status_code=500, detail= str(e))
