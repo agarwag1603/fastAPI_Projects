@@ -16,3 +16,5 @@ rag_with_localdb/llm/__pycache__/llm_caller.cpython-313.pyc
 rag_with_localdb/schema/__pycache__/user_input.cpython-313.pyc
 fastapi_llm/__pycache__/fastapi_llm.cpython-313.pyc
 fastapi_project/__pycache__/fastapi_testing.cpython-313.pyc
+fastapi_langgraph/schema/__pycache__/user_input.cpython-313.pyc
+fastapi_langgraph/schema/__pycache__/__init__.cpython-313.pyc
